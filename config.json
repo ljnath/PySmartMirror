@@ -1,0 +1,29 @@
+{
+    "locale": "en",
+    "unit": "si",
+    "feed_url": "https://news.google.com/news?ned=us&output=rss",
+    "font_family": "Helvetica",
+    "24H_format": false,
+    
+    "font_size": {
+      "xl": 64,
+      "l": 32,
+      "m": 20,
+      "s": 10
+    },
+
+    "color": {
+      "background": "black",
+      "foreground": "white"
+    },
+
+    "location": {
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+
+    "api_key": {
+      "darksky.net": "",
+      "opencagedata.com": ""
+    }
+  }
