@@ -6,6 +6,9 @@ from PySmartMirror.handlers.log import LogHandler
 
 
 class ConfigHandler:
+    """
+    Class to read and load user configuration from a json file
+    """
     def __init__(self, config_file):
         self.__logger = LogHandler().get_logger()
         self.__config_file = config_file
@@ -20,6 +23,10 @@ class ConfigHandler:
             raise InvalidInput(f'Input configuation file {self.__config_file} is not a file')
 
     def load(self):
+        """
+        Method to load JSON file.
+        :return json_configs : json_configs as dict . All user configuration as a dictionary
+        """
         self.__logger.info(f'Loading configurations from {self.__config_file}')
         json_configs = {}
         with open(self.__config_file) as json_data_file:
@@ -28,6 +35,9 @@ class ConfigHandler:
         return json_configs
 
     def __validate(self, json_configs):
+        """
+        Method to validate if all the expected configuration are present in the input configuration file
+        """
         self.__logger.debug('Validation configurations')
 
         expected_keys = (
@@ -52,10 +62,12 @@ class ConfigHandler:
             ('api_key', 'opencagedata.com')
         )
 
+        # validating for parent json block
         for key in expected_keys:
             local_config = json_configs
             local_key = key
 
+            # validating for nested child json block
             if type(key) == tuple:
                 parent_key, local_key = key
                 local_config = json_configs[parent_key]

@@ -6,7 +6,7 @@ from PySmartMirror.handlers.environment import Environment
 
 class Clock(Frame):
     """
-    Clock class for creating the clock on TOP-RIGHT of the screen.
+    Clock widget class for creating the clock on TOP-RIGHT of the screen.
     Automatically calls the tick method to update the clock date, day and time.
     """
     def __init__(self, parent):
@@ -33,7 +33,7 @@ class Clock(Frame):
 
         self.__update()
 
-    def __update(self):
+    def __update(self) -> None:
         """
         tick method to update clock's date, time and day.
         """
@@ -56,5 +56,5 @@ class Clock(Frame):
             self.__date = current_date
             self.__lb_current_date_text.config(text=self.__date)
 
-        # calls itself every 200 ms
+        # calls itself every 500 ms
         self.after(500, lambda: self.__update())

@@ -4,6 +4,9 @@ from PySmartMirror.common.singleton import Singleton
 
 
 class Environment(metaclass=Singleton):
+    """
+    Singleton environment class which stores all user configuration as well as graphics file name
+    """
     def __init__(self):
         self.__assets_directory = os.path.dirname(os.path.realpath(__file__))
         self.__images = {
@@ -25,6 +28,10 @@ class Environment(metaclass=Singleton):
         }
 
     def populate(self, configs):
+        """
+        Method to populate the environmental variabled with user configuration
+        :param config : config as dict. Configuration values in the form of a dictionary
+        """
         self.__font = configs['font_family']
         self.__locale = configs['locale']
         self.__weather_language = self.__locale
@@ -51,9 +58,19 @@ class Environment(metaclass=Singleton):
         self.__weather_api_token = configs['api_key']['darksky.net']
 
     def get_image_path(self, image_type):
+        """
+        Method to return the aboslute path of images based on passed image_type
+        If image type is missing, then None is retuned
+        :param image_type : image_type as str. Type of image to look for
+        :return image_path : image_path as str.
+        """
         image_path = None
         if image_type in self.__images.keys():
             image_path = f'{self.__assets_directory}/../assets/{self.__images[image_type]}'
+
+        if not os.path.exists(image_path) or not os.path.isfile(image_path):
+            image_path = None
+
         return image_path
 
     @property

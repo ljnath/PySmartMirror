@@ -2,6 +2,9 @@ from PySmartMirror.models.location import Location
 
 
 class Weather:
+    """
+    Weather model class
+    """
     def __init__(self):
         self.__temperature = ''
         self.__current_state = ''

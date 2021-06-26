@@ -1,4 +1,7 @@
 class Location:
+    """
+    Location model class with details which will be shown on screen
+    """
     def __init__(self):
         self.__city = ''
         self.__state = ''

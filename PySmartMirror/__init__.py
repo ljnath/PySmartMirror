@@ -39,27 +39,36 @@ from PySmartMirror.widgets.weather import Weather
 
 
 class SmartMirror:
+    """
+    Main SmartMirror class which loads user configurations, creates mirror and adds widgets to it
+    """
     def __init__(self, config_file):
+        # initializing ConfigHandler and loading all the configuration into a dict
         config_handler = ConfigHandler(config_file)
         configs = config_handler.load()
 
+        # initilaizing Environment and populating all environment variabled with user configurations
         env = Environment()
         env.populate(configs)
 
+        # creating tkinter window with background color as black
         self.__tkinter = Tk()
         self.__tkinter.configure(background=env.background_color)
 
+        # creating 3 frames - TOP, CENTER, BOTTOM
         self.top_frame = Frame(self.__tkinter, background=env.background_color)
         self.center_frame = Frame(self.__tkinter, background=env.background_color)
-        self.gesture_frame = Frame(self.__tkinter, background=env.background_color)
         self.bottom_frame = Frame(self.__tkinter, background=env.background_color)
 
+        # positioning the frames
         self.top_frame.pack(side=TOP, fill=BOTH, expand=YES)
         self.center_frame.pack(side=TOP, fill=BOTH, expand=YES)
-        self.gesture_frame.pack(side=TOP, fill=BOTH, expand=YES)
         self.bottom_frame.pack(side=BOTTOM, fill=BOTH, expand=YES)
 
+        # setting default fullscreen switch to false
         self.__is_fullscreen = False
+
+        # binding keyboard keys [ENTER] and [ESCAPE] to enable fullscreen and end fullscreen
         self.__tkinter.bind("<Return>", self.toggle_fullscreen)
         self.__tkinter.bind("<Escape>", self.end_fullscreen)
 
@@ -71,33 +80,30 @@ class SmartMirror:
         weather_widget = Weather(self.top_frame)
         weather_widget.pack(side=LEFT, anchor=N, padx=40, pady=60)
 
-        # #custom text
-        # self.customText = CustomText(self.center_frame)
-        # self.customText.pack(side=TOP, anchor=CENTER, padx=40, pady=60)
-
-        # #gesture frame
-        # self.gesture = Gesture(self.gesture_frame)
-        # self.gesture.pack(side=TOP, anchor=W, padx=40, pady=60)
-
         # creating and adding feed widget
         feeds_widget = Feeds(self.bottom_frame)
         feeds_widget.pack(side=LEFT, anchor=S, padx=40, pady=40)
 
-        # calender - removing for now
-        # self.calender = Calendar(self.bottom_frame)
-        # self.calender.pack(side = LEFT, anchor=S, padx=200, pady=100)
-
-    def start(self, fullscreen):
+    def start(self, fullscreen: bool) -> None:
+        """
+        Method to start the smart mirror
+        """
         if fullscreen:
             self.__tkinter.attributes("-fullscreen", True)
         self.__tkinter.mainloop()
 
     def toggle_fullscreen(self, event=None):
+        """
+        Method to toggle fullscreen
+        """
         self.__is_fullscreen = not self.__is_fullscreen
         self.__tkinter.attributes("-fullscreen", self.__is_fullscreen)
         return "break"
 
     def end_fullscreen(self, event=None):
+        """
+        Method to end fullscreen
+        """
         self.__is_fullscreen = False
         self.__tkinter.attributes("-fullscreen", False)
         return "break"
