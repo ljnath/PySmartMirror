@@ -15,8 +15,8 @@ Website : https://www.ljnath.com
 
 ## INTRODUCTION
 
-PySmartMirror is a simple Smart Mirror project written in python3 around Tkinter library.
-This is a light weight project to run on raspberry pi.
+PySmartMirror is a simple smart mirror project written in python3 around Tkinter library.
+This is a light weight project and can run on raspberry pi as well.
 
 It can display current time, weather and latest news feeds.
 It sports a configuration file `config.json` in the root directory, using which user can customize it to meet their needs.

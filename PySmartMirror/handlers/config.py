@@ -30,7 +30,27 @@ class ConfigHandler:
     def __validate(self, json_configs):
         self.__logger.debug('Validation configurations')
 
-        expected_keys = ('locale', 'unit', 'feed_url', 'font_family', 'font_size', ('font_size', 'xl'), ('font_size', 'l'), ('font_size', 'm'), ('font_size', 's'), '24H_format')
+        expected_keys = (
+            'locale',
+            'unit',
+            'feed_url',
+            'font_family',
+            '24H_format',
+            'font_size',
+            ('font_size', 'xl'),
+            ('font_size', 'l'),
+            ('font_size', 'm'),
+            ('font_size', 's'),
+            'color',
+            ('color', 'background'),
+            ('color', 'foreground'),
+            'location',
+            ('location', 'latitude'),
+            ('location', 'longitude'),
+            'api_key',
+            ('api_key', 'darksky.net'),
+            ('api_key', 'opencagedata.com')
+        )
 
         for key in expected_keys:
             local_config = json_configs
