@@ -17,7 +17,7 @@ class InvalidInput(BaseException):
     Exception class to be raised when any input is invalid
     """
     def __init__(self, message):
-        super.__init__()
+        super().__init__()
         self.logger.exception(message)
 
 
