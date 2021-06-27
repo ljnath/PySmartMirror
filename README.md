@@ -10,6 +10,8 @@ Website : https://www.ljnath.com
 
 [![GitHub license](https://img.shields.io/github/license/ljnath/PySmartMirror)](https://github.com/ljnath/PySmartMirror/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/ljnath/PySmartMirror)](https://github.com/ljnath/PySmartMirror/stargazers)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/ljnath/PySmartMirror.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ljnath/PySmartMirror/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ljnath/PySmartMirror.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ljnath/PySmartMirror/context:python)
 
 </br>
 
