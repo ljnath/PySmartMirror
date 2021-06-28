@@ -15,6 +15,7 @@ Website : https://www.ljnath.com
 
 </br>
 
+
 ## INTRODUCTION
 
 PySmartMirror is a simple smart mirror project written in python3 around Tkinter library.
@@ -28,6 +29,8 @@ User has to enter the latitude and longitude of their city in the `config.json` 
 
 User also needs to register in both of these services and obtain the free API key, which they need to specify in the `config.json` file.
 
+## SAMPLE
+<img src="smartmirror.png" aligh="center"/>
 
 ## DEVELOPMENT
 
